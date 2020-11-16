@@ -1,0 +1,39 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2 style="text-align: center;">
+            Я, <mark>Гуз Ярослав Максимович</mark>, изучаю HTML5
+        </h2>
+        <div>
+            <h2>Видеофайл</h2>
+            <video controls="controls">
+                <source src="/Lab1/content/astrologyst.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            </video>
+        </div>
+        <div>
+            <h2>Аудиофайл</h2>
+            <audio controls="controls">
+                <source src="/Lab1/content/Billy Idol - Dancing With Myself.mp3">
+            </audio>
+        </div>
+        <div>
+            <h2>Геолокация</h2>
+            <input type="button" value="Определить местоположение" onclick="getCoordinates()">
+            <div id="outpJs"></div>
+            <script>
+                function getCoordinates(){
+                    navigator.geolocation.getCurrentPosition(showCoordinates);
+                }
+                function showCoordinates(position){
+                    var outpJs = document.getElementById("outpJs");
+                    outpJs.innerHTML += "<p>"
+                    outpJs.innerHTML += "Широта: " + position.coords.latitude + "<br/>";
+                    outpJs.innerHTML += "Широта: " + position.coords.longitude + "<br/>";
+                    outpJs.innerHTML += "</p>"
+                }
+            </script>
+        </div>
+    </body>
+</html>
