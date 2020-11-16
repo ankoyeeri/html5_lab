@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <title>Лабораторная работа 2</title>
+</head>
+
+<body>
+    <img src="/Lab2/content/picture.jpg" id="imgJs" width="300px" style="display: none;">
+    
+    <input type="button" value="Нарисовать гистограмму" onclick="drawgist()">
+    <input type="button" value="Нарисовать диаграмму" onclick="drawdiagr()">
+    <div>
+        <canvas id="canvasJs1" width="700" height="700" style="display: none;">        
+        </canvas>
+        <script>
+            function drawgist(){
+                var canvasJs = document.getElementById("canvasJs1");
+                canvasJs.style.display = "block";
+                let x = canvasJs.getContext("2d");
+                x.beginPath();
+                
+                //  x
+                x.moveTo(20, 20);
+                x.lineTo(20, 580);
+                
+                //  y
+                x.moveTo(20, 580)
+                x.lineTo(580, 580)
+
+                x.stroke();
+                x.closePath();
+                x.fill();
+
+                x.font = '15px Veranda';
+                x.fillStyle = "rgb(0,0,0)"
+
+                //  Обозначения x
+                let yLine = 580;
+                for(let i = 0; i < 12; i++){
+                    x.fillText(i, 5, yLine)
+                    yLine -= 50;
+                }
+                x.fillText("Годы", 30, 20)
+
+                //  Обозначение y
+                // Сад, Школа, Музыкальная школа, Университет
+                let xLine = 80;
+                let arrShool = ['Сад', 'Школа', 'Муз. школа', 'Университет'];
+                for(let i = 0; i < arrShool.length; i++){
+                    x.fillText(arrShool[i], xLine, 600);
+                    xLine += 120;
+                }
+                x.fillText("Уч. заведения", 590, 570);
+                
+                //----------------------------
+                //  Сад
+                var img = document.getElementById("imgJs")
+                x.drawImage(img, 80, 579, 40, -150);
+                // x.fillRect(80, 579, 40, -150);
+                //----------------------------
+                
+                //----------------------------
+                //  Школа
+                x.fillStyle = "Coral"
+                x.fillRect(200, 579, 40, -550);
+                //----------------------------
+
+                //----------------------------
+                //  Музыкальная школа
+                x.fillStyle = "CornflowerBlue"
+                x.fillRect(320, 579, 40, -400);
+                //----------------------------
+
+                //----------------------------
+                //  Университет
+                var grad = x.createLinearGradient(160, 460, 200, 289);
+                grad.addColorStop(0, 'gray');
+                grad.addColorStop(1, "azure");
+
+                x.fillStyle = grad;
+                x.fillRect(440, 579, 40, -180);
+                //----------------------------
+            }
+        </script>
+    </div>
+
+    <div>
+        <canvas id="canvasJs2" width="700" height="700" style="display: none;">
+        </canvas>
+        <script>
+            function drawdiagr(){
+                var canvasJs = document.getElementById("canvasJs2");
+                canvasJs.style.display = "block";
+                let x = canvasJs.getContext("2d");
+
+                x.fillStyle = "black";
+                x.beginPath();
+                x.arc(200, 200, 150, 0, 2*Math.PI);
+                x.lineWidth = 3;
+                x.stroke();
+
+                //  //--------------------------------
+                //  x.beginPath();
+                // x.arc(200, 200, 149, 0, Math.PI/180*50);
+                // x.lineTo(200, 200);
+                // x.lineTo(350, 200);
+                // x.fillStyle = "brown";
+                // x.stroke();
+                // x.fillStyle = "brown";
+                // x.fill();
+                // //--------------------------------                
+
+                //  Большинство - Университет
+                //--------------------------------
+                x.beginPath();
+                x.arc(200, 200, 149, 0, 2*Math.PI);
+                x.lineTo(200, 200);
+                x.lineTo(350, 200);
+                x.fillStyle = "yellow";
+                x.stroke();
+                x.fillStyle = "yellow";
+                x.fill();
+                //--------------------------------
+
+                //  Еда
+                //--------------------------------
+                x.beginPath();
+                x.arc(200, 200, 149, 0, Math.PI/180*200);
+                x.lineTo(200, 200);
+                x.lineTo(350, 200);
+                x.fillStyle = "DarkOrange";
+                x.stroke();
+                x.fillStyle = "DarkOrange";
+                x.fill();
+                //--------------------------------
+
+                //  Спорт
+                //--------------------------------
+                x.beginPath();
+                x.arc(200, 200, 149, 0, Math.PI/180*120);
+                x.lineTo(200, 200);
+                x.lineTo(350, 200);
+                x.fillStyle = "DarkSlateBlue";
+                x.stroke();
+                x.fillStyle = "DarkSlateBlue";
+                x.fill();
+                //--------------------------------
+
+
+                //  Академическая разница
+               //--------------------------------
+               x.beginPath();
+                x.arc(200, 200, 149, 0, Math.PI/180*65);
+                x.lineTo(200, 200);
+                x.lineTo(350, 200);
+                x.fillStyle = "BurlyWood";
+                x.stroke();
+                x.fillStyle = "BurlyWood";
+                x.fill();
+                //--------------------------------
+
+                //  Прогулка
+                //--------------------------------
+                x.beginPath();
+                x.arc(200, 200, 149, 0, Math.PI/180*20);
+                x.lineTo(200, 200);
+                x.lineTo(350, 200);
+                x.fillStyle = "DarkViolet";
+                x.stroke();
+                x.fillStyle = "DarkViolet";
+                x.fill();
+                //--------------------------------
+                
+                
+                x.fillStyle = "yellow";
+                x.fillRect(385, 90, 10, 10);
+                
+                x.fillStyle = "DarkOrange";
+                x.fillRect(385, 120, 10, 10);
+
+                x.fillStyle = "DarkSlateBlue";
+                x.fillRect(385, 150, 10, 10);
+
+                x.fillStyle = "BurlyWood";
+                x.fillRect(385, 180, 10, 10);
+                
+                x.fillStyle = "DarkViolet";
+                x.fillRect(385, 210, 10, 10);
+
+                x.font = '15px Veranda';
+                x.fillStyle = "rgb(0,0,0)";
+
+                x.fillText("Университет", 400, 100);
+                x.fillText("Академическая разница", 400, 130);
+                x.fillText("Спорт", 400, 160);
+                x.fillText("Прогулка", 400, 190);
+                x.fillText("Еда", 400, 220);
+
+                x.font = '30px Veranda';
+                x.fillText("Распорядок дня", 400, 50);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
