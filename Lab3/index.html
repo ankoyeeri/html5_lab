@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <title>Лабораторная работа 3</title>
+</head>
+
+<body>
+    <header>
+        <h2 style="text-align: center;">
+            Я, <mark>Гуз Ярослав Максимович</mark>, изучаю HTML5
+        </h2>
+    </header>
+
+    <nav>
+        <figure>
+            <img src="/Lab3/content/picture.jpg" width="100" height="100">
+            <figcaption>Гуз Я.М.</figcaption>
+        </figure>
+    </nav>
+
+    <div>
+        <h2>Видеофайл</h2>
+        <video controls="controls">
+            <source src="/Lab3/content/astrologyst.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        </video>
+    </div>
+    <div>
+        <h2>Аудиофайл</h2>
+        <audio controls="controls">
+            <source src="/Lab3/content/Billy Idol - Dancing With Myself.mp3">
+        </audio>
+    </div>
+    <div>
+        <h2>Геолокация</h2>
+        <input type="button" value="Определить местоположение" onclick="getCoordinates()">
+        <div id="outpJs"></div>
+        <script>
+            function getCoordinates() {
+                navigator.geolocation.getCurrentPosition(showCoordinates);
+            }
+            function showCoordinates(position) {
+                var outpJs = document.getElementById("outpJs");
+                outpJs.innerHTML += "<p>"
+                outpJs.innerHTML += "Широта: " + position.coords.latitude + "<br/>";
+                outpJs.innerHTML += "Широта: " + position.coords.longitude + "<br/>";
+                outpJs.innerHTML += "</p>"
+            }
+        </script>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h2>Форма</h2>
+        <form name="data">
+            <b>E-mail</b><br>
+            <input name="email" type="email" required>
+            <br>
+
+            <b>Ссылка на ваши соц сети</b><br>
+            <input type="url">
+            <br>
+
+            <b>Телефонный номер</b><br>
+            <input name="tel" type="tel" required>
+            <br>
+
+            <b>Числовой ввод</b><br>
+            <input type="number" min="0" max="10">
+            <br>
+
+            <b>Диапазон от 0 до 5</b><br>
+            <input type="range" min="0" max="5">
+            <br>
+
+            <b>Поиск</b><br>
+            <input type="search">
+            <br>
+
+            <b>Цвет</b><br>
+            <input type="color">
+
+            <p>
+                <input type="button" value="Отправить" onclick="showInfo()">
+            </p>
+
+            <br>
+        </form>
+    </div>
+
+    <script src="/Lab3/script.js"></script>
+
+    <footer>
+        <p>Гуз Ярослав Максимович</p>
+        <div id="outpJs3"></div>
+    </footer>
+</body>
+
+</html>
